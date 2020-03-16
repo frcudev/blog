@@ -72,6 +72,11 @@
       "pre-push": "npm run test --maxWorkers=8 && ng build"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-angular"
+    ]
+  },
   "lint-staged": {
     "*.html": [
       "js-beautify",

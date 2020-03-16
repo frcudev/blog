@@ -1,0 +1,5 @@
+polyfills.ts
+commitlint.config.js
+/**/*.json
+/**/*.ftl
+/**/*.scss
