@@ -1,16 +1,12 @@
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {SharedModule} from '../shared/shared.module';
 import {NavigationComponent} from './layout/navigation/navigation.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [NavigationComponent],
   imports: [
-    // vendor
-    RouterModule,
-
-    // local
-    SharedModule,
+    // material
+    MatToolbarModule,
   ],
   exports: [NavigationComponent],
 })
