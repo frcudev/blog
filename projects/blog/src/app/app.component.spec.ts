@@ -3,6 +3,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
+import {LoadingService} from './core/services/loading.service';
 import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
@@ -10,6 +11,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule, CoreModule, SharedModule, RouterTestingModule],
       declarations: [AppComponent],
+      providers: [LoadingService],
     }).compileComponents();
   }));
 

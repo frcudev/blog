@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'frcu-dev-blog-root',
@@ -7,4 +8,11 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'blog';
+
+  navOpened: Observable<boolean>;
+  navToggled = new BehaviorSubject(false);
+
+  onNavToggle() {
+    this.navToggled.next(!this.navToggled.value);
+  }
 }

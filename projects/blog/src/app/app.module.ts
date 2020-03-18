@@ -1,8 +1,11 @@
 import {NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
+import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
 import {CoreModule} from './core/core.module';
+
+import {LoadingService} from './core/services/loading.service';
 
 import {AppComponent} from './app.component';
 
@@ -11,12 +14,13 @@ import {AppComponent} from './app.component';
   imports: [
     // vendor
     BrowserAnimationsModule,
+    CommonModule,
 
     // local
     CoreModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [LoadingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

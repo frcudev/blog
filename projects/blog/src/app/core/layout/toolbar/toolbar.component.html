@@ -1,0 +1,7 @@
+<mat-toolbar>
+  <button mat-icon-button *ngIf="isResponsiveLayout | async" class="menu" (click)="toggleMenu()">
+    <mat-icon aria-hidden="false" aria-label="Menu">{{ navOpened ? 'close' : 'menu' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-progress-bar *ngIf="isLoading | async" color="accent" mode="indeterminate"></mat-progress-bar>
