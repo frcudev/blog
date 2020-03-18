@@ -2,3 +2,6 @@ polyfills.ts
 commitlint.config.js
 /**/*.json
 /**/*.ftl
+package.json
+package-lock.json
+dist

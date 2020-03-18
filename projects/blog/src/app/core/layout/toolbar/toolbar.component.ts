@@ -1,4 +1,5 @@
 import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {LoadingService} from '../../services/loading.service';
 import {ResponsiveLayoutService} from '../responsive-layout.service';
@@ -16,6 +17,7 @@ export class ToolbarComponent implements OnInit {
   isLoading: Observable<boolean>;
   isResponsiveLayout: Observable<boolean>;
   columnCount: Observable<number>;
+  search = new FormControl('');
 
   constructor(
     private responsiveLayoutService: ResponsiveLayoutService,

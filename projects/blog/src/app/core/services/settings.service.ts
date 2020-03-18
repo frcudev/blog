@@ -18,4 +18,6 @@ export class SettingsService {
   }
 }
 
-export interface Settings {}
+export interface Settings {
+  example: string;
+}

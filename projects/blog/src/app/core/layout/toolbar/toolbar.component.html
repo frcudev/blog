@@ -1,7 +1,21 @@
-<mat-toolbar>
-  <button mat-icon-button *ngIf="isResponsiveLayout | async" class="menu" (click)="toggleMenu()">
-    <mat-icon aria-hidden="false" aria-label="Menu">{{ navOpened ? 'close' : 'menu' }}</mat-icon>
-  </button>
+<mat-toolbar class="level is-mobile">
+  <div class="level-left">
+    <div class="level-item">
+      <button mat-icon-button *ngIf="isResponsiveLayout | async" class="menu" (click)="toggleMenu()">
+        <mat-icon aria-hidden="false" aria-label="Menu">{{ navOpened ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <form class="level-item has-text-centered">
+    <mat-form-field>
+      <input matInput [formControl]="search" placeholder="Busca en el blog" />
+    </mat-form-field>
+  </form>
+
+  <div class="level-right">
+    <span class="level-item">Sarasa</span>
+  </div>
 </mat-toolbar>
 
 <mat-progress-bar *ngIf="isLoading | async" color="accent" mode="indeterminate"></mat-progress-bar>

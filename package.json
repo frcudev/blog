@@ -71,7 +71,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "ng lint && pretty-quick --staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "npm run test --maxWorkers=8 && ng build"
     }
@@ -79,18 +79,6 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-angular"
-    ]
-  },
-  "lint-staged": {
-    "*.html": [
-      "js-beautify"
-    ],
-    "*.ts": [
-      "pretty-quick --staged",
-      "tslint --fix"
-    ],
-    "*.scss": [
-      "stylelint --fix"
     ]
   },
   "jest": {
