@@ -2,6 +2,7 @@ polyfills.ts
 commitlint.config.js
 /**/*.json
 /**/*.ftl
+/**/*.scss
 package.json
 package-lock.json
 dist
