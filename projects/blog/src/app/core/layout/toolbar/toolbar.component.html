@@ -1,20 +1,16 @@
-<mat-toolbar class="level is-mobile">
-  <div class="level-left">
-    <div class="level-item">
-      <button mat-icon-button *ngIf="isResponsiveLayout | async" class="menu" (click)="toggleMenu()">
-        <mat-icon aria-hidden="false" aria-label="Menu">{{ navOpened ? 'close' : 'menu' }}</mat-icon>
-      </button>
-    </div>
+<mat-toolbar fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <div fxFlex="20" fxLayoutAlign="center center">
+    <button mat-icon-button *ngIf="isResponsiveLayout | async" class="menu" (click)="toggleMenu()">
+      <mat-icon aria-hidden="false" aria-label="Menu">{{ navOpened ? 'close' : 'menu' }}</mat-icon>
+    </button>
   </div>
 
-  <form class="level-item has-text-centered">
-    <mat-form-field>
-      <input matInput [formControl]="search" placeholder="Busca en el blog" />
-    </mat-form-field>
-  </form>
+  <mat-form-field fxFlex="60">
+    <input matInput [formControl]="search" placeholder="Busca en el blog" />
+  </mat-form-field>
 
-  <div class="level-right">
-    <span class="level-item">Sarasa</span>
+  <div fxFlex="20" fxLayoutAlign="center center">
+    <span>Sarasa</span>
   </div>
 </mat-toolbar>
 

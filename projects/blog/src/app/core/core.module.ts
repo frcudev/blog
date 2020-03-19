@@ -5,8 +5,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {ToolbarComponent} from './layout/toolbar/toolbar.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {ToolbarComponent} from './layout/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [ToolbarComponent],
@@ -15,6 +16,9 @@ import {BrowserModule} from '@angular/platform-browser';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+
+    // flex
+    FlexLayoutModule,
 
     // material
     MatFormFieldModule,

@@ -28,7 +28,6 @@
               "projects/blog/src/assets"
             ],
             "styles": [
-              "node_modules/bulma/css/bulma.min.css",
               "projects/blog/src/styles.scss"
             ],
             "scripts": []
