@@ -8,9 +8,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {BrowserModule} from '@angular/platform-browser';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ToolbarComponent} from './layout/toolbar/toolbar.component';
+import {SearchBoxComponent} from './search-box/search-box.component';
 
 @NgModule({
-  declarations: [ToolbarComponent],
+  declarations: [ToolbarComponent, SearchBoxComponent],
   imports: [
     // vendor
     BrowserModule,
