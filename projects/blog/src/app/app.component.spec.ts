@@ -1,7 +1,6 @@
 import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
 import {LoadingService} from './core/services/loading.service';
 import {AppComponent} from './app.component';
@@ -9,7 +8,7 @@ import {AppComponent} from './app.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, CoreModule, SharedModule, RouterTestingModule],
+      imports: [BrowserAnimationsModule, CoreModule, RouterTestingModule],
       declarations: [AppComponent],
       providers: [LoadingService],
     }).compileComponents();
