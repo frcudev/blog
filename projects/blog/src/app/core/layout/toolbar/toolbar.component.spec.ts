@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {LoadingService} from '../../services/loading.service';
 import {ToolbarComponent} from './toolbar.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -27,6 +28,7 @@ describe('ToolbarComponent', () => {
         MatToolbarModule,
       ],
       providers: [LoadingService],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 
