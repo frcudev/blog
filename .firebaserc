@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "frcu-dev-blog": {
+      "hosting": {
+        "blog": [
+          "frcu-dev-blog"
+        ]
+      }
+    }
+  }
+}
