@@ -4,16 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: 'AIzaSyAlLQe6YCFhS9KGbAnu985JHlvLjWOHyuY',
-    authDomain: 'frcu-dev-blog.firebaseapp.com',
-    databaseURL: 'https://frcu-dev-blog.firebaseio.com',
-    projectId: 'frcu-dev-blog',
-    storageBucket: 'frcu-dev-blog.appspot.com',
-    messagingSenderId: '647005828496',
-    appId: '1:647005828496:web:a7ccba7d08331da47faf15',
-    measurementId: 'G-CYJZBQJ0ER',
-  },
+  firebase: {},
 };
 
 /*
