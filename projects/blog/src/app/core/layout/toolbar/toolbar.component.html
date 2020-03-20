@@ -1,17 +1,17 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-  <div fxFlex="20" fxLayoutAlign="center center">
-    <button mat-icon-button *ngIf="isResponsiveLayout | async" class="menu" (click)="toggleMenu()">
+  <div fxFlex="20" fxLayoutAlign="center center" *ngIf="isResponsiveLayout | async">
+    <button mat-icon-button class="menu" (click)="toggleMenu()">
       <mat-icon aria-hidden="false" aria-label="Menu">{{ navOpened ? 'close' : 'menu' }}</mat-icon>
     </button>
   </div>
 
-  <div fxFlex="60">
-    <frcu-dev-blog-search-box></frcu-dev-blog-search-box>
+  <div fxFlex [fxLayoutAlign]="(isResponsiveLayout | async) ? 'center center' : 'start center'">
+    <a mat-icon-button routerLink="home" class="logo">
+      <mat-icon inline svgIcon="logo" aria-hidden="false" aria-label="FRCU Dev"></mat-icon>
+    </a>
   </div>
 
   <div fxFlex="20" fxLayoutAlign="center center">
     <span>Sarasa</span>
   </div>
 </mat-toolbar>
-
-<mat-progress-bar *ngIf="isLoading | async" color="accent" mode="indeterminate"></mat-progress-bar>

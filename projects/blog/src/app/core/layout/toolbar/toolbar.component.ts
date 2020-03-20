@@ -1,14 +1,14 @@
-import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, OnInit, EventEmitter, Output, Input, ChangeDetectionStrategy} from '@angular/core';
 import {Observable} from 'rxjs';
+import {shareReplay} from 'rxjs/operators';
 import {LoadingService} from '../../services/loading.service';
 import {ResponsiveLayoutService} from '../responsive-layout.service';
-import {shareReplay} from 'rxjs/operators';
 
 @Component({
   selector: 'frcu-dev-blog-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent implements OnInit {
   @Input() navOpened: boolean;
@@ -17,7 +17,6 @@ export class ToolbarComponent implements OnInit {
   isLoading: Observable<boolean>;
   isResponsiveLayout: Observable<boolean>;
   columnCount: Observable<number>;
-  search = new FormControl('');
 
   constructor(
     private responsiveLayoutService: ResponsiveLayoutService,

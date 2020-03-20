@@ -1,5 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {MatIconModule} from '@angular/material/icon';
+import {MatIconModule, MatIcon} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -8,7 +8,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {LoadingService} from '../../services/loading.service';
 import {ToolbarComponent} from './toolbar.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import {NO_ERRORS_SCHEMA, Component, Input} from '@angular/core';
+
+@Component({
+  selector: 'frcu-dev-blog-mat-icon',
+  template: '<span></span>',
+})
+class MockMatIconComponent {
+  @Input() svgIcon: any;
+  @Input() fontSet: any;
+  @Input() fontIcon: any;
+}
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -29,7 +39,18 @@ describe('ToolbarComponent', () => {
       ],
       providers: [LoadingService],
       schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents();
+    })
+      .overrideModule(MatIconModule, {
+        remove: {
+          declarations: [MatIcon],
+          exports: [MatIcon],
+        },
+        add: {
+          declarations: [MockMatIconComponent],
+          exports: [MockMatIconComponent],
+        },
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {

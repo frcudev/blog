@@ -83,6 +83,10 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "assets": [
+              "projects/blog/src/favicon.ico",
+              "projects/blog/src/assets"
+            ]
           }
         },
         "lint": {
