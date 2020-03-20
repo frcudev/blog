@@ -7,8 +7,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'blog';
-
   navOpened: Observable<boolean>;
   navToggled = new BehaviorSubject(false);
 
