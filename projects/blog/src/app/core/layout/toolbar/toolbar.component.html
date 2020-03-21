@@ -1,17 +1,38 @@
-<mat-toolbar fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-  <div fxFlex="20" fxLayoutAlign="center center" *ngIf="isResponsiveLayout | async">
-    <button mat-icon-button class="menu" (click)="toggleMenu()">
-      <mat-icon aria-hidden="false" aria-label="Menu">{{ navOpened ? 'close' : 'menu' }}</mat-icon>
-    </button>
-  </div>
-
-  <div fxFlex [fxLayoutAlign]="(isResponsiveLayout | async) ? 'center center' : 'start center'">
+<mat-toolbar fxLayout="row">
+  <div fxFlex fxLayoutAlign="start center">
     <a mat-icon-button routerLink="home" class="logo">
       <mat-icon inline svgIcon="logo" aria-hidden="false" aria-label="FRCU Dev"></mat-icon>
     </a>
   </div>
 
-  <div fxFlex="20" fxLayoutAlign="center center">
-    <span>Sarasa</span>
+  <div fxFlex="50" fxLayoutAlign="end center" fxLayoutGap="20px">
+    <button mat-raised-button color="accent" matTooltip="Nuevo Post" (click)="newPost()">
+      <span *ngIf="(isResponsiveLayout$ | async) === false"> Nuevo Post </span>
+      <mat-icon aria-hidden="false" aria-label="Nuevo Post">post_add</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      aria-label="Menu"
+      [matMenuTriggerFor]="menu"
+      [class.avatar]="user$ | async"
+      [style.background-image]="'url(' + (user$ | async)?.photoURL + ')'"
+    >
+      <mat-icon *ngIf="(user$ | async)  === null">menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <span mat-menu-item *ngIf="user$ | async as user">{{ user?.displayName }}</span>
+
+      <mat-divider *ngIf="user$ | async"></mat-divider>
+
+      <button mat-menu-item *ngIf="(user$ | async) === null">
+        <span>Ingresar</span>
+      </button>
+
+      <button mat-menu-item>
+        <span>Acerca de FRCU Dev Blog</span>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>

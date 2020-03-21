@@ -6,10 +6,10 @@ import {map, scan} from 'rxjs/operators';
 export class LoadingService {
   private trigger = new Subject<number>();
 
-  isLoading: Observable<boolean>;
+  isLoading$: Observable<boolean>;
 
   constructor() {
-    this.isLoading = this.trigger.pipe(
+    this.isLoading$ = this.trigger.pipe(
       scan((result, next) => {
         result += next;
         result = result < 0 ? 0 : result;

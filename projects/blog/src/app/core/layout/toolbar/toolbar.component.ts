@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {shareReplay} from 'rxjs/operators';
 import {LoadingService} from '../../services/loading.service';
 import {ResponsiveLayoutService} from '../responsive-layout.service';
+import {AuthService} from '../../services/auth.service';
+import {User} from '../../models/user.model';
 
 @Component({
   selector: 'frcu-dev-blog-toolbar',
@@ -14,24 +16,29 @@ export class ToolbarComponent implements OnInit {
   @Input() navOpened: boolean;
   @Output() toggle = new EventEmitter<void>();
 
-  isLoading: Observable<boolean>;
-  isResponsiveLayout: Observable<boolean>;
-  columnCount: Observable<number>;
+  isLoading$: Observable<boolean>;
+  isResponsiveLayout$: Observable<boolean>;
+  columnCount$: Observable<number>;
+  user$: Observable<User | null>;
 
   constructor(
     private responsiveLayoutService: ResponsiveLayoutService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.isResponsiveLayout = this.responsiveLayoutService.isSmallOrSmaller.pipe(
+    this.isResponsiveLayout$ = this.responsiveLayoutService.isSmallOrSmaller$.pipe(
       shareReplay({bufferSize: 1, refCount: true})
     );
-    this.columnCount = this.responsiveLayoutService.columnCount;
-    this.isLoading = this.loadingService.isLoading;
+    this.columnCount$ = this.responsiveLayoutService.columnCount$;
+    this.isLoading$ = this.loadingService.isLoading$;
+    this.user$ = this.authService.user$;
   }
 
   toggleMenu() {
     this.toggle.emit();
   }
+
+  newPost() {}
 }

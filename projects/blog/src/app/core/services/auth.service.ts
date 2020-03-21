@@ -4,7 +4,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 import {Observable, of} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {switchMap, map} from 'rxjs/operators';
 
 import {auth} from 'firebase/app';
 
@@ -14,7 +14,7 @@ import {User} from '../models/user.model';
   providedIn: 'root',
 })
 export class AuthService {
-  user$: Observable<User | null | undefined>;
+  user$: Observable<User | null>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -25,7 +25,10 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.afs
+            .doc<User>(`users/${user.uid}`)
+            .valueChanges()
+            .pipe(map(u => u ?? null));
         } else {
           return of(null);
         }
