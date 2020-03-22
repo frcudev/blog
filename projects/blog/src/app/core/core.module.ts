@@ -14,14 +14,17 @@ import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToolbarComponent} from './layout/toolbar/toolbar.component';
 import {SearchBoxComponent} from './search-box/search-box.component';
+import {MainLayoutComponent} from './layout/main-layout/main-layout.component';
 
 @NgModule({
-  declarations: [ToolbarComponent, SearchBoxComponent],
+  declarations: [MainLayoutComponent, ToolbarComponent, SearchBoxComponent],
   imports: [
     // vendor
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
     FormsModule,
@@ -42,7 +45,7 @@ import {SearchBoxComponent} from './search-box/search-box.component';
     MatCardModule,
     MatDividerModule,
   ],
-  exports: [ToolbarComponent],
+  exports: [MainLayoutComponent, ToolbarComponent],
 })
 export class CoreModule {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
