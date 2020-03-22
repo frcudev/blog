@@ -14,12 +14,12 @@ export class LoginModule {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
       'google-logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/logo/google.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/logos/google.svg')
     );
 
     this.matIconRegistry.addSvgIcon(
       'github-logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/logo/github.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/logos/github.svg')
     );
   }
 }

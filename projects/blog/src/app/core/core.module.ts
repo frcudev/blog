@@ -58,7 +58,7 @@ export class CoreModule {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
       'logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/logo/logo.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/logos/logo.svg')
     );
   }
 }
