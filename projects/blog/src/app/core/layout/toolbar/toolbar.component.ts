@@ -1,4 +1,5 @@
 import {Component, OnInit, EventEmitter, Output, Input, ChangeDetectionStrategy} from '@angular/core';
+import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {shareReplay} from 'rxjs/operators';
 import {ResponsiveLayoutService} from '../responsive-layout.service';
@@ -21,7 +22,8 @@ export class ToolbarComponent implements OnInit {
 
   constructor(
     private responsiveLayoutService: ResponsiveLayoutService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -36,5 +38,7 @@ export class ToolbarComponent implements OnInit {
     this.toggle.emit();
   }
 
-  newPost() {}
+  signOut() {
+    this.authService.signOut().then(() => this.router.navigate(['/']));
+  }
 }

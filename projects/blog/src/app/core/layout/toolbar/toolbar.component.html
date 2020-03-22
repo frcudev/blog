@@ -6,7 +6,7 @@
   </div>
 
   <div fxFlex="50" fxLayoutAlign="end center" fxLayoutGap="20px">
-    <button mat-raised-button color="accent" matTooltip="Nuevo Post" (click)="newPost()">
+    <button mat-raised-button color="accent" matTooltip="Nuevo Post" routerLink="newPost">
       <span *ngIf="(isResponsiveLayout$ | async) === false"> Nuevo Post </span>
       <mat-icon aria-hidden="false" aria-label="Nuevo Post">post_add</mat-icon>
     </button>
@@ -32,6 +32,10 @@
 
       <button mat-menu-item>
         <span>Acerca de FRCU Dev Blog</span>
+      </button>
+
+      <button mat-menu-item *ngIf="user$ | async" (click)="signOut()">
+        <span>Salir</span>
       </button>
     </mat-menu>
   </div>
