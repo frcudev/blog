@@ -1,4 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'frcu-dev-blog-home',
@@ -7,7 +9,23 @@ import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.user$.subscribe(user => {
+      if (!user) {
+        return;
+      } else {
+        const returnUrl = localStorage.getItem('returnUrl');
+
+        if (!returnUrl) {
+          return;
+        }
+
+        localStorage.removeItem('returnUrl');
+
+        this.router.navigateByUrl(returnUrl);
+      }
+    });
+  }
 }

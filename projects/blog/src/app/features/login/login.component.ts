@@ -1,5 +1,4 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {Router} from '@angular/router';
 import {AuthService} from '../../core/services/auth.service';
 
 @Component({
@@ -9,19 +8,13 @@ import {AuthService} from '../../core/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.user$.subscribe(user => {
-      if (user) {
-        this.router.navigate(['/home']);
-      }
-    });
-  }
+  constructor(private authService: AuthService) {}
 
   loginWithGoogle() {
-    this.authService.loginWithGoogle().then(() => this.router.navigate(['/home']));
+    this.authService.loginWithGoogle();
   }
 
   loginWithGitHub() {
-    this.authService.loginWithGitHub().then(() => this.router.navigate(['/home']));
+    this.authService.loginWithGitHub();
   }
 }
