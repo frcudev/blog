@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
         this.settingsService.updateSettings({returnUrl: ''});
 
-        this.router.navigateByUrl(settings.returnUrl);
+        this.router.navigateByUrl(settings?.returnUrl);
       }
     });
   }
