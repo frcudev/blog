@@ -14,6 +14,7 @@
     <button
       mat-icon-button
       [matMenuTriggerFor]="menu"
+      class="menu-button"
       [class.avatar]="user$ | async"
       [style.background-image]="'url(' + (user$ | async)?.photoURL + ')'"
     >

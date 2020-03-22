@@ -4,7 +4,7 @@ import {Observable, BehaviorSubject} from 'rxjs';
 @Component({
   selector: 'frcu-dev-blog-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.css'],
+  styleUrls: ['./main-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayoutComponent {
