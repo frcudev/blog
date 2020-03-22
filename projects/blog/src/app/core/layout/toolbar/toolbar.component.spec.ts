@@ -15,7 +15,6 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {AngularFireModule} from '@angular/fire';
 import 'firebase/firestore';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {LoadingService} from '../../services/loading.service';
 import {ToolbarComponent} from './toolbar.component';
 
 @Component({
