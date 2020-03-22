@@ -22,10 +22,6 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <span mat-menu-item *ngIf="user$ | async as user">{{ user?.displayName }}</span>
-
-      <mat-divider *ngIf="user$ | async"></mat-divider>
-
       <button mat-menu-item routerLink="login" *ngIf="(user$ | async) === null">
         <span>Ingresar</span>
       </button>
