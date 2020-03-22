@@ -1,1 +1,44 @@
-<p>new-post works!</p>
+<div fxLayout="row">
+  <mat-card fxFlex>
+    <mat-card-content>
+      <form [formGroup]="post" fxLayout="column" fxLayoutGap="12px">
+        <mat-form-field>
+          <input matInput placeholder="Título" name="title" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-chip-list #chipList aria-label="Tags">
+            <mat-chip *ngFor="let tag of tags.value" (removed)="remove(tag)">
+              {{ tag }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+
+            <input
+              placeholder="Tags..."
+              name="tags"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)"
+            />
+          </mat-chip-list>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput placeholder="Contenido en Markdown" name="body"></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions fxLayout="column" fxLayoutGap="12px">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" class="publish-button">Publicar</button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button class="secondary-button">Ayuda</button>
+        <button mat-raised-button class="secondary-button preview-button">Previsualizar</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
