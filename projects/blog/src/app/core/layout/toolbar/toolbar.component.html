@@ -1,7 +1,7 @@
 <mat-toolbar fxLayout="row">
   <div fxFlex fxLayoutAlign="start center">
     <a mat-icon-button routerLink="home" class="logo">
-      <mat-icon inline svgIcon="logo" aria-hidden="false" aria-label="FRCU Dev"></mat-icon>
+      <mat-icon inline svgIcon="logo" aria-hidden="false" aria-label="FRCU Dev Blog"></mat-icon>
     </a>
   </div>
 
@@ -13,12 +13,11 @@
 
     <button
       mat-icon-button
-      aria-label="Menu"
       [matMenuTriggerFor]="menu"
       [class.avatar]="user$ | async"
       [style.background-image]="'url(' + (user$ | async)?.photoURL + ')'"
     >
-      <mat-icon *ngIf="(user$ | async)  === null">menu</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Menu" *ngIf="(user$ | async)  === null">menu</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
