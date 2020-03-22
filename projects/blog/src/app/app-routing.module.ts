@@ -7,8 +7,8 @@ const routes: Routes = [
   {path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)},
   {path: 'login', loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)},
   {
-    path: 'newPost',
-    loadChildren: () => import('./features/new-post/new-post.module').then(m => m.NewPostModule),
+    path: 'posts',
+    loadChildren: () => import('./features/posts/posts.module').then(m => m.PostsModule),
     canActivate: [AuthGuard],
   },
   {path: 'about', loadChildren: () => import('./features/about/about.module').then(m => m.AboutModule)},
