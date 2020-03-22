@@ -11,6 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./features/new-post/new-post.module').then(m => m.NewPostModule),
     canActivate: [AuthGuard],
   },
+  {path: 'about', loadChildren: () => import('./features/about/about.module').then(m => m.AboutModule)},
   {path: '**', redirectTo: 'home'},
 ];
 
