@@ -5,7 +5,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AngularFireModule} from '@angular/fire';
 import 'firebase/firestore';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {LoadingService} from '../../services/loading.service';
 
 import {MainLayoutComponent} from './main-layout.component';
 
@@ -32,7 +31,7 @@ describe('MainLayoutComponent', () => {
         AngularFirestoreModule,
       ],
       declarations: [MainLayoutComponent],
-      providers: [LoadingService],
+      providers: [],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));

@@ -1,7 +1,6 @@
 import {Component, OnInit, EventEmitter, Output, Input, ChangeDetectionStrategy} from '@angular/core';
 import {Observable} from 'rxjs';
 import {shareReplay} from 'rxjs/operators';
-import {LoadingService} from '../../services/loading.service';
 import {ResponsiveLayoutService} from '../responsive-layout.service';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user.model';
@@ -16,14 +15,12 @@ export class ToolbarComponent implements OnInit {
   @Input() navOpened: boolean;
   @Output() toggle = new EventEmitter<void>();
 
-  isLoading$: Observable<boolean>;
   isResponsiveLayout$: Observable<boolean>;
   columnCount$: Observable<number>;
   user$: Observable<User | null>;
 
   constructor(
     private responsiveLayoutService: ResponsiveLayoutService,
-    private loadingService: LoadingService,
     private authService: AuthService
   ) {}
 
@@ -32,7 +29,6 @@ export class ToolbarComponent implements OnInit {
       shareReplay({bufferSize: 1, refCount: true})
     );
     this.columnCount$ = this.responsiveLayoutService.columnCount$;
-    this.isLoading$ = this.loadingService.isLoading$;
     this.user$ = this.authService.user$;
   }
 

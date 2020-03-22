@@ -36,11 +36,24 @@ export class AuthService {
     );
   }
 
-  async login() {
+  async loginWithGoogle() {
     const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || this.router.url;
     localStorage.setItem('returnUrl', returnUrl);
 
     const credential = await this.afAuth.signInWithPopup(new auth.GoogleAuthProvider());
+
+    if (!credential.user) {
+      return;
+    }
+
+    return this.updateUserData(credential.user);
+  }
+
+  async loginWithGitHub() {
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || this.router.url;
+    localStorage.setItem('returnUrl', returnUrl);
+
+    const credential = await this.afAuth.signInWithPopup(new auth.GithubAuthProvider());
 
     if (!credential.user) {
       return;

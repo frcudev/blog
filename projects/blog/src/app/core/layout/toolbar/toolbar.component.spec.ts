@@ -62,7 +62,6 @@ describe('ToolbarComponent', () => {
         }),
         AngularFirestoreModule,
       ],
-      providers: [LoadingService],
       schemas: [NO_ERRORS_SCHEMA],
     })
       .overrideModule(MatIconModule, {

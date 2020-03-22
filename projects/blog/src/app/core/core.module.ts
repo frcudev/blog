@@ -10,25 +10,32 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {ToolbarComponent} from './layout/toolbar/toolbar.component';
 import {SearchBoxComponent} from './search-box/search-box.component';
 import {MainLayoutComponent} from './layout/main-layout/main-layout.component';
+import {environment} from '../../environments/environment';
+import 'firebase/firestore';
 
 @NgModule({
   declarations: [MainLayoutComponent, ToolbarComponent, SearchBoxComponent],
   imports: [
     // vendor
-    BrowserModule,
-    BrowserAnimationsModule,
+    CommonModule,
     RouterModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+
+    // firebase
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
 
     // flex
     FlexLayoutModule,

@@ -1,1 +1,9 @@
-<p>login works!</p>
+<div fxLayout="column">
+  <button mat-button fxLayoutAlign="space-around center" (click)="loginWithGoogle()">
+    <mat-icon svgIcon="google-logo"></mat-icon> Ingresa con Google
+  </button>
+
+  <button mat-button fxLayoutAlign="space-around center" (click)="loginWithGitHub()">
+    <mat-icon svgIcon="github-logo"></mat-icon> Ingresa con GitHub
+  </button>
+</div>
