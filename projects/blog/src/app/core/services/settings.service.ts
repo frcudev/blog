@@ -8,8 +8,14 @@ export const LOCAL_STORAGE_KEY = 'frcu-dev-blog-com';
 export class SettingsService {
   constructor() {}
 
-  getSettings(): Settings {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) ?? '') || {};
+  getSettings(): Settings | null {
+    const localStorageItem = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+    if (!localStorageItem) {
+      return null;
+    }
+
+    return JSON.parse(localStorageItem) || {};
   }
 
   updateSettings(update: Partial<Settings>) {
@@ -19,5 +25,5 @@ export class SettingsService {
 }
 
 export interface Settings {
-  example: string;
+  returnUrl: string;
 }

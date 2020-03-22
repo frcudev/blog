@@ -8,6 +8,8 @@ import {switchMap, map} from 'rxjs/operators';
 
 import {auth} from 'firebase/app';
 
+import {SettingsService} from './settings.service';
+
 import {User} from '../models/user.model';
 
 @Injectable({
@@ -17,6 +19,7 @@ export class AuthService {
   user$: Observable<User | null>;
 
   constructor(
+    private settingsService: SettingsService,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
@@ -38,7 +41,7 @@ export class AuthService {
 
   async loginWithGoogle() {
     const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || this.router.url;
-    localStorage.setItem('returnUrl', returnUrl);
+    this.settingsService.updateSettings({returnUrl});
 
     const credential = await this.afAuth.signInWithPopup(new auth.GoogleAuthProvider());
 
@@ -51,7 +54,7 @@ export class AuthService {
 
   async loginWithGitHub() {
     const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || this.router.url;
-    localStorage.setItem('returnUrl', returnUrl);
+    this.settingsService.updateSettings({returnUrl});
 
     const credential = await this.afAuth.signInWithPopup(new auth.GithubAuthProvider());
 
