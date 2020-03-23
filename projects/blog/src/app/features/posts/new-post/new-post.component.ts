@@ -12,7 +12,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 export class NewPostComponent implements OnInit {
   post = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    tags: new FormArray([], [Validators.required]),
+    tags: new FormArray([], [Validators.required, Validators.minLength(1), Validators.maxLength(4)]),
     body: new FormControl('', [Validators.required]),
   });
 
@@ -31,20 +31,36 @@ export class NewPostComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    if ((value || '').trim()) {
-      this.tags.push(this.fb.control(value.trim()));
+    if (!(value || '').trim()) {
+      return;
     }
 
-    if (input) {
+    if (this.tags.length >= 4) {
       input.value = '';
+
+      return;
     }
+
+    this.tags.push(this.fb.control(value.trim()));
+
+    input.value = '';
   }
 
-  remove(tag: any) {
+  remove(tag: FormControl) {
     const index = this.tags.controls.indexOf(tag);
 
     if (index >= 0) {
       this.tags.removeAt(index);
     }
+  }
+
+  hasError(control: string, validatorName: string) {
+    let hasError = false;
+
+    if (this.post && control) {
+      hasError = this.post.controls[control].hasError(validatorName) && this.post.controls[control].touched;
+    }
+
+    return hasError;
   }
 }

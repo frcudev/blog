@@ -3,19 +3,22 @@
     <mat-card-content>
       <form [formGroup]="post" fxLayout="column" fxLayoutGap="12px">
         <mat-form-field>
-          <input matInput placeholder="Título" name="title" />
+          <input matInput placeholder="Título" formControlName="title" />
+
+          <mat-error *ngIf="hasError('title', 'required')">
+            Debes ingresar un valor
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-chip-list #chipList aria-label="Tags">
-            <mat-chip *ngFor="let tag of tags.value" (removed)="remove(tag)">
-              {{ tag }}
+            <mat-chip *ngFor="let tag of tags.controls" (removed)="remove(tag)">
+              {{ tag.value }}
               <mat-icon matChipRemove>cancel</mat-icon>
             </mat-chip>
 
             <input
-              placeholder="Tags..."
-              name="tags"
+              placeholder="4 tags como máximo, sin espacios ni caracteres especiales"
               [matChipInputFor]="chipList"
               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
               [matChipInputAddOnBlur]="addOnBlur"
@@ -25,7 +28,11 @@
         </mat-form-field>
 
         <mat-form-field>
-          <textarea matInput placeholder="Contenido en Markdown" name="body"></textarea>
+          <textarea matInput placeholder="Contenido en Markdown" formControlName="body"></textarea>
+
+          <mat-error *ngIf="hasError('body', 'required')">
+            Debes ingresar un valor
+          </mat-error>
         </mat-form-field>
       </form>
     </mat-card-content>
